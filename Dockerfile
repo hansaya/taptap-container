@@ -1,5 +1,5 @@
 ARG BUILD_FROM
-FROM alpine:3.21
+FROM alpine:3.16
 
 WORKDIR /tmp
 
