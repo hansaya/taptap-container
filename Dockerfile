@@ -1,5 +1,5 @@
 ARG BUILD_FROM
-FROM ghcr.io/hassio-addons/base/amd64:17.2.4
+FROM jlesage/baseimage:ubuntu-24.04-v3
 
 WORKDIR /tmp
 
@@ -31,6 +31,8 @@ RUN \
     && rm -Rf /tmp/*
 
 RUN chmod 775 /etc
+RUN addgroup -S taptap && adduser -S taptap -G taptap -h /run/taptap -H
+
 USER nonroot:nonroot
 ENTRYPOINT ["/usr/bin/taptap/taptap-mqtt.py /data/config.ini"]
 
