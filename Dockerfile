@@ -78,7 +78,7 @@ RUN \
 
 RUN chmod 775 /etc
 RUN addgroup -S taptap && adduser -S taptap -G taptap -h /run/taptap -H
-RUN chown taptap:taptap -R /run/taptap
+# RUN chown -r taptap:taptap -R /run/taptap
 
 USER taptap:taptap
 ENTRYPOINT ["python", "/usr/bin/taptap/taptap-mqtt.py", "/run/taptap/config.ini"]
