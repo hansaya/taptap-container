@@ -31,6 +31,7 @@ RUN \
     && rm -Rf /tmp/*
 
 RUN chmod 775 /etc
+USER nonroot:nonroot
 ENTRYPOINT ["/usr/bin/taptap/taptap-mqtt.py /data/config.ini"]
 
 # Labels
