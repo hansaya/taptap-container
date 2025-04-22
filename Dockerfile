@@ -8,7 +8,7 @@ RUN apk upgrade --no-cache && apk add --no-cache python3 py3-pip
 
 # Get taptap binary
 RUN \
-    TAPTAP_ARCH="musl-x86_64"; \
+    TAPTAP_ARCH="musl-x86_64" \
     && mkdir /usr/bin/taptap \
     && chmod 755 /usr/bin/taptap \
     && curl -sSLf -o /tmp/taptap.tgz \
