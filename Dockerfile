@@ -1,5 +1,5 @@
 ARG BUILD_FROM
-FROM jlesage/baseimage:ubuntu-24.04-v3
+FROM jlesage/baseimage:debian-11-v3
 
 WORKDIR /tmp
 
