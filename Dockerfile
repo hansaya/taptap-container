@@ -14,9 +14,6 @@ ENV \
     PS1="$(whoami)@$(hostname):$(pwd)$ " \
     PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
-    S6_BEHAVIOUR_IF_STAGE2_FAILS=2 \
-    S6_CMD_WAIT_FOR_SERVICES_MAXTIME=0 \
-    S6_CMD_WAIT_FOR_SERVICES=1 \
     YARN_HTTP_TIMEOUT=1000000 \
     TERM="xterm-256color" 
 
@@ -26,7 +23,6 @@ SHELL ["/bin/ash", "-o", "pipefail", "-c"]
 # Install base system
 ARG BUILD_ARCH=amd64
 ARG BASHIO_VERSION="v0.16.3"
-ARG S6_OVERLAY_VERSION="3.2.0.2"
 ARG TEMPIO_VERSION="2024.11.2"
 RUN \
     set -o pipefail \
@@ -50,7 +46,7 @@ RUN \
 WORKDIR /tmp
 
 # Install python/pip
-RUN apk upgrade --no-cache && apk add --no-cache python3 py3-pip curl tar xz libcrypto3 libssl3 musl-utils musl bash jq tzdata
+RUN apk upgrade --no-cache && apk add --no-cache python3 py3-pip
 
 # Get taptap binary
 RUN \
@@ -78,7 +74,6 @@ RUN \
 
 RUN chmod 775 /etc
 RUN addgroup -S taptap && adduser -S taptap -G taptap -h /run/taptap -H
-# RUN chown -r taptap:taptap -R /run/taptap
 
 USER taptap:taptap
 ENTRYPOINT ["python", "/usr/bin/taptap/taptap-mqtt.py", "/run/taptap/config.ini"]
