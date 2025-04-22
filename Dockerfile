@@ -1,5 +1,5 @@
 ARG BUILD_FROM
-FROM amd64/alpine:3.21.3
+FROM ghcr.io/hassio-addons/base/amd64:17.2.4
 
 WORKDIR /tmp
 
@@ -33,7 +33,7 @@ RUN \
 RUN chmod 775 /etc
 RUN addgroup -S taptap && adduser -S taptap -G taptap -h /run/taptap -H
 
-USER nonroot:nonroot
+USER taptap:taptap
 ENTRYPOINT ["/usr/bin/taptap/taptap-mqtt.py /data/config.ini"]
 
 # Labels
