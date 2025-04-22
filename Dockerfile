@@ -80,7 +80,7 @@ RUN chmod 775 /etc
 RUN addgroup -S taptap && adduser -S taptap -G taptap -h /run/taptap -H
 
 USER taptap:taptap
-ENTRYPOINT ["python /usr/bin/taptap/taptap-mqtt.py /tmp/config.ini"]
+ENTRYPOINT ["python", "/usr/bin/taptap/taptap-mqtt.py", "/tmp/config.ini"]
 
 # Labels
 LABEL \
