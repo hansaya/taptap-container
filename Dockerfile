@@ -1,10 +1,10 @@
 ARG BUILD_FROM
-FROM alpine:3.21
+FROM amd64/alpine:3.21.3
 
 WORKDIR /tmp
 
 # Install python/pip
-RUN apk upgrade --no-cache && apk add --no-cache python3 py3-pip curl
+RUN apk upgrade --no-cache && apk add --no-cache python3 py3-pip curl tar xz libcrypto3 libssl3 musl-utils musl bash jq tzdata
 
 # Get taptap binary
 RUN \
