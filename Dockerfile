@@ -1,5 +1,5 @@
 ARG BUILD_FROM
-FROM jlesage/baseimage:debian-11-v3
+FROM alpine:3.21
 
 WORKDIR /tmp
 
